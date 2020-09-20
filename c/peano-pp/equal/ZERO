@@ -1,0 +1,3 @@
+#include <aux.h>
+
+#include PEANO_STRINGIFY(PEANO_CAT(ZERO_, PEANO_FST(Y))
