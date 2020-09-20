@@ -4,4 +4,5 @@
    - `patch-on-write/` -- Like `Cow`, but collects patches on writes, instead of cloning the whole structure (type level).
  - `c/`
    - `peano-pp/` -- My attempt to implement Peano's arithmetic via `#include`.
- 
+   - `hkt.c` -- Higher-kinded types imitation in pure C.
+
