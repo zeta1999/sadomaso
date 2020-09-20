@@ -1,0 +1,57 @@
+# ifndef BOOST_PREPROCESSOR_CLOSURE_CLOSURE_HPP
+# define BOOST_PREPROCESSOR_CLOSURE_CLOSURE_HPP
+#
+# include <boost/preprocessor/facilities/overload.hpp>
+# include <boost/preprocessor/seq/for_each.hpp>
+# include <boost/preprocessor/tuple/elem.hpp>
+#
+# define BOOST_PP_CLOSURE(...) ((_0, _1, __VA_ARGS__))
+#
+# define BOOST_PP_CLOSURE_ARGS   ))((_0, _1, _2, _3))            ((_0, _1,
+# define BOOST_PP_CLOSURE_LPAREN ))((_0, _1, _2, _3, _4))        ((_0, _1,
+# define BOOST_PP_CLOSURE_RPAREN ))((_0, _1, _2, _3, _4, _5))    ((_0, _1,
+# define BOOST_PP_CLOSURE_COMMA  ))((_0, _1, _2, _3, _4, _5, _6))((_0, _1,
+#
+# define BOOST_PP_CLOSURE_ARG(i) \
+  BOOST_PP_TUPLE_ELEM BOOST_PP_CLOSURE_LPAREN 0 BOOST_PP_CLOSURE_COMMA \
+      BOOST_PP_CLOSURE_ARGS BOOST_PP_CLOSURE_RPAREN
+#
+# define BOOST_PP_CLOSURE_ARG_0 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 0 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_1 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 1 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_2 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 2 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_3 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 3 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_4 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 4 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_5 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 5 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_6 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 6 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_7 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 7 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_8 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 8 BOOST_PP_CLOSURE_RPAREN
+# define BOOST_PP_CLOSURE_ARG_9 BOOST_PP_CLOSURE_ARG BOOST_PP_CLOSURE_LPAREN 9 BOOST_PP_CLOSURE_RPAREN
+#
+# define BOOST_PP_CLOSURE_EXEC_0(closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (__VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_1(_0, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_2(_1, _2, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_3(_0, _1, _2, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, _2, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_4(_0, _1, _2, _3, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, _2, _3, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_5(_0, _1, _2, _3, _4, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, _2, _3, _4, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_6(_0, _1, _2, _3, _4, _5, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, _2, _3, _4, _5, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_7(_0, _1, _2, _3, _4, _5, _6, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, _2, _3, _4, _5, _6, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_8(_0, _1, _2, _3, _4, _5, _6, _7, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, _2, _3, _4, _5, _6, _7, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_9(_0, _1, _2, _3, _4, _5, _6, _7, _8, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, _2, _3, _4, _5, _6, _7, _8, __VA_ARGS__), closure)
+# define BOOST_PP_CLOSURE_EXEC_10(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, closure, ...) BOOST_PP_SEQ_FOR_EACH(BOOST_PP_CLOSURE_REPLACE, (_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, __VA_ARGS__), closure)
+#
+# define BOOST_PP_CLOSURE_REPLACE(s, args_tuple, body_part) \
+  BOOST_PP_OVERLOAD(CLOSURE_REPLACE_, args_tuple, \
+                    BOOST_PP_CLOSURE_EXTRACT_BODY_PART body_part) \
+  BOOST_PP_CLOSURE_PACK_ARGS(args_tuple, \
+                             BOOST_PP_CLOSURE_EXTRACT_BODY_PART body_part)
+#
+# define BOOST_PP_CLOSURE_EXTRACT_BODY_PART(...) __VA_ARGS__
+# define BOOST_PP_CLOSURE_PACK_ARGS(...)        (__VA_ARGS__)
+#
+# define BOOST_PP_CLOSURE_REPLACE_4(args_tuple, _0, _1, _2)                 _2
+# define BOOST_PP_CLOSURE_REPLACE_5(args_tuple, _0, _1, _2, _3)             args_tuple
+# define BOOST_PP_CLOSURE_REPLACE_6(args_tuple, _0, _1, _2, _3, _4)         (
+# define BOOST_PP_CLOSURE_REPLACE_7(args_tuple, _0, _1, _2, _3, _4, _5)     )
+# define BOOST_PP_CLOSURE_REPLACE_8(args_tuple, _0, _1, _2, _3, _4, _5, _6) ,
+#
+#endif
